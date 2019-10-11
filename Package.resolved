@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "RxSwift",
-        "repositoryURL": "https://github.com/MediaTalkClientTeam/RxSwift.git",
+        "repositoryURL": "https://github.com/lcg5450/RxSwift.git",
         "state": {
           "branch": null,
           "revision": "6ae398b4ec899d91915c51ff216e362457dbd89f",
