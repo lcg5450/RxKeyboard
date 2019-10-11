@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name             = 'RxKeyboard'
-  s.version          = '0.7.0'
+  s.version          = '0.7.3'
   s.summary          = 'Reactive Keyboard in iOS'
-  s.homepage         = 'https://github.com/RxSwiftCommunity/RxKeyboard'
+  s.homepage         = 'https://github.com/MediaTalkClientTeam/RxKeyboard'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Suyeol Jeon' => 'devxoul@gmail.com' }
-  s.source           = { :git => 'https://github.com/RxSwiftCommunity/RxKeyboard.git',
+  s.source           = { :git => 'https://github.com/MediaTalkClientTeam/RxKeyboard.git',
                          :tag => s.version.to_s }
   s.source_files     = 'Sources/**/*.swift'
   s.frameworks       = 'UIKit', 'Foundation'
