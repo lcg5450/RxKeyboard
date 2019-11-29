@@ -8,7 +8,7 @@ let package = Package(
     .library(name: "RxKeyboard", targets: ["RxKeyboard"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/lcg5450/RxSwift.git", .exact("4.3.5")),
+    .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "5.0.0")),
   ],
   targets: [
     .target(name: "RxKeyboard", dependencies: ["RxSwift", "RxCocoa"]),
