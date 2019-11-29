@@ -50,7 +50,7 @@ public class RxKeyboard: NSObject {
       width: UIScreen.main.bounds.width,
       height: 0
     )
-    let frameVariable = Variable<CGRect>(defaultFrame)
+    let frameVariable = BehaviorRelay<CGRect>(value: defaultFrame)
     self.frame = frameVariable.asDriver().distinctUntilChanged()
     self.visibleHeight = self.frame.map { UIScreen.main.bounds.height - $0.origin.y }
     self.willShowVisibleHeight = self.visibleHeight
@@ -64,9 +64,9 @@ public class RxKeyboard: NSObject {
     super.init()
 
     // keyboard will change frame
-    let willChangeFrame = NotificationCenter.default.rx.notification(.UIKeyboardWillChangeFrame)
+    let willChangeFrame = NotificationCenter.default.rx.notification(UIResponder.keyboardWillChangeFrameNotification)
       .map { notification -> CGRect in
-        let rectValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue
+        let rectValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
         return rectValue?.cgRectValue ?? defaultFrame
       }
       .map { frame -> CGRect in
@@ -79,9 +79,9 @@ public class RxKeyboard: NSObject {
       }
 
     // keyboard will hide
-    let willHide = NotificationCenter.default.rx.notification(.UIKeyboardWillHide)
+    let willHide = NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
       .map { notification -> CGRect in
-        let rectValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue
+        let rectValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
         return rectValue?.cgRectValue ?? defaultFrame
       }
       .map { frame -> CGRect in
@@ -114,7 +114,7 @@ public class RxKeyboard: NSObject {
 
     // gesture recognizer
     self.panRecognizer.delegate = self
-    NotificationCenter.default.rx.notification(.UIApplicationDidFinishLaunching)
+    NotificationCenter.default.rx.notification(UIApplication.didFinishLaunchingNotification)
       .map { _ in Void() }
       .startWith(Void()) // when RxKeyboard is initialized before UIApplication.window is created
       .subscribe(onNext: { _ in
