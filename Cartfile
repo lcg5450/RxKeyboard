@@ -1,1 +1,2 @@
-github "ReactiveX/RxSwift" ~> 5.0.0
+git "https://github.com/lcg5450/RxSwift.git" "39a1766452d4b78ebb52caa327f29ebc918d23fd"
+#github "ReactiveX/RxSwift" ~> 5.0.0
